@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+      - name: branch source
+        run: echo "from pr branch 'trigger'"
       - name: Show triggering event
         run: echo 'Trigger event is ${{ github.event_name }}'
 #      - name: Nasty Hack To Get Right Docker Build Context
