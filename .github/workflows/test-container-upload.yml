@@ -16,7 +16,9 @@ jobs:
     - name: show images
       run: docker images
     - name: upload image
-      run: docker push ghcr.io/citests1/first-action
+      run: |
+        docker push ghcr.io/citests1/first-action:latest
+        docker push ghcr.io/citests1/first-action:$GITHUB_SHA
       
       
      
