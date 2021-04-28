@@ -4,7 +4,7 @@ on:
 
 jobs:
   build_test_upload:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Image build
