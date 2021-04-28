@@ -16,7 +16,7 @@ jobs:
     - name: show images
       run: docker images
     - name: upload image
-      run: docker push ghcr.io/citests1/first-action:latest
+      run: docker push ghcr.io/citests1/first-action
       
       
      
