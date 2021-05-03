@@ -15,23 +15,27 @@ jobs:
         run: echo "from pr branch 'trigger'"
       - name: Show triggering event
         run: echo 'Trigger event is ${{ github.event_name }}'
+      - name: log in to the regisry
+        run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u citests1 --password-stdin
+      - name: run container
+        run: docker run ghcr.io/citests1/first-action:latest .
 #      - name: Nasty Hack To Get Right Docker Build Context
 #        run: cp ./.github/actions/docker_action/Dockerfile . && cp ./.github/actions/docker_action/action.yml .
 #     - name: Run Docker Tests
 #       uses: ./
       - name: Show commit
         run: git show -q
-      - name: Remove ci:run Tag
-        uses: actions/github-script@v3
-        with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.removeLabel({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              name: 'ci:run'
-            })
+#      - name: Remove ci:run Tag
+#        uses: actions/github-script@v3
+#        with:
+#          github-token: ${{secrets.GITHUB_TOKEN}}
+#          script: |
+#            github.issues.removeLabel({
+#              issue_number: context.issue.number,
+#              owner: context.repo.owner,
+#              repo: context.repo.repo,
+#              name: 'ci:run'
+#            })
 #      - name: add a file for testing
 #        run: git show -q > .commitinfo
 #      - name: adding commit
