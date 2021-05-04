@@ -18,7 +18,7 @@ jobs:
       - name: log in to the regisry
         run: echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u citests1 --password-stdin
       - name: run container
-        run: docker run ghcr.io/citests1/first-action:latest .
+        run: docker run ghcr.io/citests1/first-action:latest
 #      - name: Nasty Hack To Get Right Docker Build Context
 #        run: cp ./.github/actions/docker_action/Dockerfile . && cp ./.github/actions/docker_action/action.yml .
 #     - name: Run Docker Tests
