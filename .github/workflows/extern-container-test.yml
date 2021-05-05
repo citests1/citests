@@ -1,4 +1,10 @@
 name: External Container Test
+
+# Runs a private container from a testing account: jwithersci
+# This requires that the PAT for the account is added to the repository (or org) secrets.
+# Used in anger, the container would be from inside the organization account and the GITHUB_TOKEN
+# would be used for access.
+
 on:
   workflow_dispatch
 
@@ -6,7 +12,6 @@ jobs:
   test_run:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: log in to the registry
       run: echo ${{ secrets.CONTAINER_PAT }} | docker login ghcr.io -u jwithersci --password-stdin
     - name: do the thing
