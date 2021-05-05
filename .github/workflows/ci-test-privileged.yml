@@ -1,4 +1,4 @@
-name: Workflow Run Test
+name: Privileged CI Tests
 
 on:
   workflow_run:
@@ -7,11 +7,11 @@ on:
       - completed
 
 jobs:
-  testaccess:
+  Privileged Tests:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - name: log in to the registry
       run: echo ${{ secrets.CONTAINER_PAT }} | docker login ghcr.io -u jwithersci --password-stdin
-    - name: do the thing
+    - name: run private external container
       run: docker run ghcr.io/jwithersci/priv-jwithersci:latest
