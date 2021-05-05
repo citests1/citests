@@ -1,3 +1,4 @@
+name: CI Tests
 on:
   pull_request:
     types: [labeled]
@@ -19,4 +20,4 @@ jobs:
           echo "GITHUB_REPOSITORY:  $GITHUB_REPOSITORY"
           echo "GITHUB_SHA:  $GITHUB_SHA"
           echo ${{ github.event.number }}
-          echo $(( github.issue.number }}
+      
