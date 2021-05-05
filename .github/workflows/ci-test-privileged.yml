@@ -9,7 +9,7 @@ on:
 jobs:
   testaccess:
     runs-on: ubuntu-latest
-    if: contains(github.event.pull_request.labels.*.name, 'ci:test')
+    if: contains( toJson(github), 'ci:test')
     steps:
     - name: log in to the registry
       run: echo ${{ secrets.CONTAINER_PAT }} | docker login ghcr.io -u jwithersci --password-stdin
