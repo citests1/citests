@@ -26,16 +26,16 @@ jobs:
 #        run: echo ${{ secrets.CONTAINER_PAT }} | docker login ghcr.io -u jwithersci --password-stdin
 #      - name: run private external container
 #        run: docker run ghcr.io/jwithersci/priv-jwithersci:latest
-       - name: create json file
-         run: |
-           python3 .github/assets/write_json.py
-       - name: commit ci info file
-         run: |
-           git config --local user.email "$(git log --format='%ae' HEAD^!)"
-           git config --local user.name "$(git log --format='%an' HEAD^!)"
-           git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
-           git pull github ${GITHUB_REF}
-           git add .
-           git commit -m "adding ci data"
-           git push github HEAD:${GITHUB_HEAD_REF}
+      - name: create json file
+        run: |
+          python3 .github/assets/write_json.py
+      - name: commit ci info file
+        run: |
+          git config --local user.email "$(git log --format='%ae' HEAD^!)"
+          git config --local user.name "$(git log --format='%an' HEAD^!)"
+          git remote add github "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
+          git pull github ${GITHUB_REF}
+          git add .
+          git commit -m "adding ci data"
+          git push github HEAD:${GITHUB_HEAD_REF}
 
