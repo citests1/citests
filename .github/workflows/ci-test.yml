@@ -28,7 +28,7 @@ jobs:
 #        run: docker run ghcr.io/jwithersci/priv-jwithersci:latest
       - name: create json file
         run: |
-          python3 .github/assets/write_json.py
+          python3 .github/assets/write_json.py -f ./.tests/test.json
       - name: commit ci info file
         run: |
           git config --local user.email "$(git log --format='%ae' HEAD^!)"
