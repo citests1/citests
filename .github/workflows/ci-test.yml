@@ -22,6 +22,17 @@ jobs:
           echo "GITHUB_REPOSITORY:  $GITHUB_REPOSITORY"
           echo "GITHUB_SHA:  $GITHUB_SHA"
           echo ${{ github.event.number }}
+      - name: remove ci test tag
+        uses: actions/github-script@v3
+          with:
+            github-token: ${{secrets.GITHUB_TOKEN}}
+            script: |
+              github.issues.removeLabel({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'ci:test'
+              })
 #      - name: log in to the registry
 #        run: echo ${{ secrets.CONTAINER_PAT }} | docker login ghcr.io -u jwithersci --password-stdin
 #      - name: run private external container
@@ -38,14 +49,3 @@ jobs:
 #          git add .
 #          git commit -m "adding ci data"
 #          git push --force github HEAD:${GITHUB_HEAD_REF}
-      - name: remove ci test tag
-        uses: actions/github-script@v3
-          with:
-            github-token: ${{secrets.GITHUB_TOKEN}}
-            script: |
-              github.issues.removeLabel({
-                issue_number: context.issue.number,
-                owner: context.repo.owner,
-                repo: context.repo.repo,
-                name: 'ci:test'
-              }) 
