@@ -1,4 +1,4 @@
-mname: CI Tests
+name: CI Tests
 on:
   pull_request_target:
     types: [labeled]
@@ -38,7 +38,7 @@ jobs:
 #          git add .
 #          git commit -m "adding ci data"
 #          git push --force github HEAD:${GITHUB_HEAD_REF}
-      - name: remove ci:test tag
+      - name: remove ci test tag
         uses: actions/github-script@v3
           with:
             github-token: ${{secrets.GITHUB_TOKEN}}
