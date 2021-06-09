@@ -39,6 +39,7 @@ jobs:
               repo: context.repo.repo,
               name: 'ci:test'
             })
+          continue-on-error: true
 #      - name: log in to the registry
 #        run: echo ${{ secrets.CONTAINER_PAT }} | docker login ghcr.io -u jwithersci --password-stdin
 #      - name: run private external container
