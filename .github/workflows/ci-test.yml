@@ -48,8 +48,8 @@ jobs:
         if: contains(github.event.pull_request.body, 'TAG_FOR_CHECK')
         run: echo "TAG_FOR_CHECK found, good job"
       - name: step conditional not check
-        if: ${{ contains(github.event.pull_request.body, 'NO_TAG_HERE') == false }}
-        run echo "NOT_TAG_HERE not found (negation conditional check passed!)"
+        if: ${{ !contains(github.event.pull_request.body, 'NO_TAG_HERE') }}
+        run: echo "NOT_TAG_HERE not found (negation conditional check passed!)"
 #      - name: log in to the registry
 #        run: echo ${{ secrets.CONTAINER_PAT }} | docker login ghcr.io -u jwithersci --password-stdin
 #      - name: run private external container
