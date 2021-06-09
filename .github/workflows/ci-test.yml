@@ -23,7 +23,7 @@ jobs:
           echo "GITHUB_SHA:  $GITHUB_SHA"
           echo ${{ github.event.number }}
       - name: remove ci test tag
-        uses: actions/github-script@v3
+        uses: actions/github-script@a3e7071a34d7e1f219a8a4de9a5e0a34d1ee1293
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
