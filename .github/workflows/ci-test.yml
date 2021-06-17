@@ -1,6 +1,6 @@
 name: CI Tests
 on:
-  pull_request:
+  pull_request_target:
     types: [labeled]
     
 jobs:
@@ -50,11 +50,6 @@ jobs:
       - name: step conditional not check
         if: ${{ !contains(github.event.pull_request.body, 'NO_TAG_HERE') }}
         run: echo "NOT_TAG_HERE not found (negation conditional check passed!)"
-      - name: check for BUG= tag
-        if: ${{ !contains(github.event.pull_request.body, 'BUG=') }}
-        run: |
-          echo "PR Description requires a BUG= line with issue number or none"
-          exit 1
 #      - name: log in to the registry
 #        run: echo ${{ secrets.CONTAINER_PAT }} | docker login ghcr.io -u jwithersci --password-stdin
 #      - name: run private external container
