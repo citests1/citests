@@ -20,7 +20,7 @@ jobs:
           chmod +x ci/protected_list.py
           LIST_TEST=$(ci/protected_list.py change_files.txt ci/upstream_list.txt)
           echo $LIST_TEST
-          if [ -n $LIST_TEST]
+          if [ $LIST_TEST = 'fail']
           then
             echo "protected files being changed"
             rm change_files.txt
