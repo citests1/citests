@@ -18,7 +18,7 @@ jobs:
           echo "Files changed: $FILES"
           echo "$FILES" >> change_files.txt
           chmod +x ci/protected_list.py
-          LIST_TEST=$(ci/protected_list.py change_files.txt ci/upstream_list.txt)
+          LIST_TEST=$(ci/protected_list.py change_files.txt ci/test_list.txt)
           echo $LIST_TEST
           if [ $LIST_TEST = 'fail']
           then
