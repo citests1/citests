@@ -19,6 +19,7 @@ jobs:
           echo "$FILES" >> change_files.txt
           chmod +x ci/protected_list.py
           LIST_TEST=$(ci/protected_list.py change_files.txt ci/upstream_list.txt)
+          echo $LIST_TEST
           if [ -n $LIST_TEST]
           then
             echo "protected files being changed"
