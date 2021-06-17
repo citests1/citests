@@ -17,8 +17,9 @@ jobs:
         run: |
           echo "$GITHUB_EVENT_NAME"
           echo "Base Ref: $GITHUB_BASE_REF"
-          FILES_CHANGED=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
-          echo "Files changed: $FILES_CHANGED"
+          URL="https://api.github.com/repos/${{ github.repository }}/pulls/${{ github.event.pull_request.number }}/files"`
+          FILES=$(curl -s -X GET -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.[] | .filename')
+          echo "Files changed: $FILES"
       - name: show ci file
         run: echo "this file is checked in main"
       - name: show selected vars
