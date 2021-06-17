@@ -17,8 +17,8 @@ jobs:
         run: |
           echo ${{ github.event.before }}
           echo ${{ github.event.after }}
-#          echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV
-          echo $GITHUB_ENV
+          # echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV
+          # echo $GITHUB_ENV
       - name: show ci file
         run: echo "this file is checked in main"
       - name: show selected vars
