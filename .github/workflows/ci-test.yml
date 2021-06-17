@@ -17,7 +17,7 @@ jobs:
         run: |
           echo "$GITHUB_EVENT_NAME"
           echo "Base Ref: $GITHUB_BASE_REF"
-          FILES_CHANGED=$(git diff --name-only $GITHUB_BASE_REF HEAD)
+          FILES_CHANGED=$(git diff-tree --no-commit-id --name-only -r $GITHUB_SHA)
           echo "Files changed: $FILES_CHANGED"
       - name: show ci file
         run: echo "this file is checked in main"
