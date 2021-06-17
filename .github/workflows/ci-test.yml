@@ -21,7 +21,7 @@ jobs:
           FILES=$(curl -s -X GET -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" $URL | jq -r '.[] | .filename')
           echo "Files changed: $FILES"
           echo "$FILES" >> change_files.txt
-          cat change_files.txt
+          echo `cat change_files.txt`
       - name: show ci file
         run: echo "this file is checked in main"
       - name: show selected vars
