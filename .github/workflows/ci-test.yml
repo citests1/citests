@@ -11,6 +11,12 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 10
+      - name: Changed Files
+        run: |
+          echo "CHANGED_FILES=$(git diff --name-only ${{ github.event.before }}..${{ github.event.after }})" >> $GITHUB_ENV
+          echo $GITHUB_ENV
       - name: show ci file
         run: echo "this file is checked in main"
       - name: show selected vars
